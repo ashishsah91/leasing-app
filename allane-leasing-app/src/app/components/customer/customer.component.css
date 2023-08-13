@@ -1,0 +1,17 @@
+
+
+
+p{
+    text-align: center;
+}
+
+mat-form-field{
+    width: 50%;
+}
+
+mat-card{
+    background-color: beige;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}

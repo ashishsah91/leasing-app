@@ -1,0 +1,42 @@
+
+<form (ngSubmit)="onSubmit()" [formGroup]="leasingForm" class="example-form">
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Brand</mat-label>
+    <mat-select formControlName="brand" (selectionChange)="onBrandSelected($event)">
+      <mat-option *ngFor="let brand of brandOptions" [value]="brand">{{ brand.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Model</mat-label>
+    <mat-select formControlName="model">
+      <mat-option *ngFor="let model of modelOptions" [value]="model">{{ model.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Model Year</mat-label>
+    <input matInput formControlName="modelYear" type="number">
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>VIN</mat-label>
+    <input matInput formControlName="vin" type="text">
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" type="number">
+  </mat-form-field>
+  </p>
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
