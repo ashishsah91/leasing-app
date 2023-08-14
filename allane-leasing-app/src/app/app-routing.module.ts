@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContractOverviewComponent } from './components/contract-overview/contract-overview/contract-overview.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { LeasingContractComponent } from './components/leasing-contract/leasing-contract.component';
 
 const routes: Routes = [
   {path: 'contract-overview', component:ContractOverviewComponent},
   {path: 'vehicle',component:VehicleComponent},
   {path: 'customer',component:CustomerComponent},
+  {path:'leasing-contract',component:LeasingContractComponent},
   { path: '**', redirectTo:'/contract-overview', pathMatch:'full' },
 ];
 

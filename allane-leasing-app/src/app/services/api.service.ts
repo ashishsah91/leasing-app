@@ -15,6 +15,11 @@ export class ApiService {
      return this.httpClient.get(url, {headers: new HttpHeaders(headers)})
   }
 
+  post(url:string, params?: {}): Observable<any>{
+    const headers = this.setHeaders();
+    return this.httpClient.post(url, params, {headers: new HttpHeaders(headers)})
+  }
+
   // setting headers.
   private setHeaders() {
       let headers = { "Content-Type": "application/json"};

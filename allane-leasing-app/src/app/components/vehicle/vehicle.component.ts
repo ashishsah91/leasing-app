@@ -49,6 +49,18 @@ export class VehicleComponent implements OnInit {
   onSubmit(): void {
     if (this.leasingForm.valid) {
       console.log(this.leasingForm.value);
+      const formObject = this.leasingForm.value;
+      const postData = {'brand':formObject.brand.name,'model':formObject.model.name,'modelYear':formObject.modelYear,'vin':formObject.vin,'price':formObject.price};
+      
+      this.apiService.post('http://localhost:8080/vehicle',postData).subscribe({
+                          next:(result)=>{
+                            console.log(result);
+                          },
+                          error:(error)=>{
+                            console.log(error);
+                          },
+                          complete:()=>{
+                          }})                                       
     }
   }
 

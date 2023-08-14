@@ -18,10 +18,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { LeasingContractComponent } from './components/leasing-contract/leasing-contract.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { CustomerComponent } from './components/customer/customer.component';
     AppComponent,
     ContractOverviewComponent,
     VehicleComponent,
-    CustomerComponent
+    CustomerComponent,
+    LeasingContractComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { CustomerComponent } from './components/customer/customer.component';
     MatCardModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
     
   ],
   providers: [],
