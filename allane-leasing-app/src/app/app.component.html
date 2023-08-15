@@ -1,2 +1,20 @@
 
-<router-outlet></router-outlet>
+<header style="background:black;color:white">
+  <button type="button" mat-button (click)="drawer.toggle()">
+     <mat-icon>view_headline</mat-icon>
+  </button>
+  <span>Leasing App</span>  
+</header>
+<mat-drawer-container  autosize>
+  <mat-drawer #drawer class="sidenav" mode="side" opened>
+    <mat-list>
+      <mat-list-item routerLink="/contract-overview">Home</mat-list-item>  
+      <mat-list-item routerLink="/customer">Customers</mat-list-item>
+      <mat-list-item routerLink="/vehicle">Vehicles</mat-list-item>
+      <mat-list-item routerLink="/leasing-contract">Create Leasing Contract</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+<div class="main-content">
+       <router-outlet></router-outlet>
+</div>
+</mat-drawer-container>

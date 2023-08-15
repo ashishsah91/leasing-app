@@ -13,7 +13,6 @@ export class CustomerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private apiService: ApiService) { }
 
   ngOnInit(): void {
-
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

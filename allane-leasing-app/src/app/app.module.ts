@@ -19,11 +19,15 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { LeasingContractComponent } from './components/leasing-contract/leasing-contract.component';
+import { ContractDetailsDialogComponent } from './components/contract-details-dialog/contract-details-dialog.component';
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import { LeasingContractComponent } from './components/leasing-contract/leasing-
     ContractOverviewComponent,
     VehicleComponent,
     CustomerComponent,
-    LeasingContractComponent
+    LeasingContractComponent,
+    ContractDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ import { LeasingContractComponent } from './components/leasing-contract/leasing-
     MatNativeDateModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDialogModule
     
   ],
   providers: [],

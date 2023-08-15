@@ -1,0 +1,9 @@
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.details-card {
+    flex-basis: 45%;
+}
