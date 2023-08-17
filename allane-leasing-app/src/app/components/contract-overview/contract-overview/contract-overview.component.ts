@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ContractOverview } from 'src/app/models/contract-overview.model';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { ContractDetailsDialogComponent } from '../../contract-details-dialog/contract-details-dialog.component';
 

@@ -1,32 +1,31 @@
 
-<h4 class="text-center">Contract Overview Details</h4>
+<h2 class="text-center">Contract Overview Details</h2>
 
- <p><strong>Contract Id:</strong> {{ contractId }}</p>
- <p><strong>Monthly Rate:</strong> {{ monthlyRate }}</p>
+ <p><span>Contract Id:</span> {{ contractId }}</p>
+ <p><span>Monthly Rate:</span> {{ monthlyRate }}</p>
  
-
 <div class="details-container">
   <mat-card class="details-card">
     <mat-card-header>
-      <mat-card-title>Customer</mat-card-title>
+      <h3>Customer Details</h3>
     </mat-card-header>
     <mat-card-content>
-      <p><strong>First Name:</strong> {{ customer.firstName }}</p>
-      <p><strong>Last Name:</strong> {{ customer.lastName }}</p>
-      <p><strong>Birthdate:</strong> {{ customer.birthDate }}</p>
+      <p><span>First Name</span>: {{ customer.firstName }}</p>
+      <p><span>Last Name:</span> {{ customer.lastName }}</p>
+      <p><span>Birthdate:</span> {{ customer.birthDate | date}}</p>
     </mat-card-content>
   </mat-card>
   <mat-card class="details-card">
     <mat-card-header>
-      <mat-card-title>Vehicle</mat-card-title>
+      <h3>Vehicle Details</h3>
     </mat-card-header>
     <mat-card-content>
-      <p><strong>Brand:</strong> {{ vehicle.brand }}</p>
-      <p><strong>ID:</strong> {{ vehicle.id }}</p>
-      <p><strong>Model:</strong> {{ vehicle.model }}</p>
-      <p><strong>Model Year:</strong> {{ vehicle.modelYear }}</p>
-      <p><strong>VIN:</strong> {{ vehicle.vin }}</p>
-      <p><strong>Price:</strong> {{ vehicle.price }}</p>
+      <p><span>Brand:</span> {{ vehicle.brand }}</p>
+      <p><span>ID:</span> {{ vehicle.id }}</p>
+      <p><span>Model:</span> {{ vehicle.model }}</p>
+      <p><span>Model Year:</span> {{ vehicle.modelYear }}</p>
+      <p><span>VIN:</span> {{ vehicle.vin }}</p>
+      <p><span>Price:</span> {{ vehicle.price }}</p>
     </mat-card-content>
   </mat-card>
 </div>

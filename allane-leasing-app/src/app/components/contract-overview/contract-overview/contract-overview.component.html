@@ -43,7 +43,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
    </table>
 
-
+<div class="text-center" *ngIf="dataSource.length==0">
+         <h2>"No Records to Display"</h2>
+</div>
 
 
 

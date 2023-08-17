@@ -22,12 +22,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { LeasingContractComponent } from './components/leasing-contract/leasing-contract.component';
 import { ContractDetailsDialogComponent } from './components/contract-details-dialog/contract-details-dialog.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { ConfirmDeletionDialogComponent } from './components/confirm-deletion-dialog/confirm-deletion-dialog.component';
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { ContractDetailsDialogComponent } from './components/contract-details-di
     VehicleComponent,
     CustomerComponent,
     LeasingContractComponent,
-    ContractDetailsDialogComponent
+    ContractDetailsDialogComponent,
+    CustomerListComponent,
+    ConfirmDeletionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ import { ContractDetailsDialogComponent } from './components/contract-details-di
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
     
   ],
   providers: [],

@@ -20,6 +20,16 @@ export class ApiService {
     return this.httpClient.post(url, params, {headers: new HttpHeaders(headers)})
   }
 
+  put(url:string, params?: {}): Observable<any>{
+    const headers = this.setHeaders();
+    return this.httpClient.put(url, params, {headers: new HttpHeaders(headers)})
+  }
+
+  delete(url:string, headers?: {}): Observable<any>{
+    headers = this.setHeaders();
+    return this.httpClient.delete(url, {headers: new HttpHeaders(headers)})
+  }
+
   // setting headers.
   private setHeaders() {
       let headers = { "Content-Type": "application/json"};

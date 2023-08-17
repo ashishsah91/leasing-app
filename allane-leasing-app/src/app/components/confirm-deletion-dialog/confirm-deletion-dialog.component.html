@@ -1,0 +1,11 @@
+
+<div class="text-center">
+  <mat-icon class="cancel-icon">cancel</mat-icon>
+</div>
+<div mat-dialog-content class="text-center">
+  Do you really want to delete this record?
+</div>
+<div mat-dialog-actions class="btn-container">
+  <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-stroked-button color="warn" mat-dialog-close cdkFocusInitial (click)="deleteEntity()">Delete</button>
+</div>

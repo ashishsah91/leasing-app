@@ -30,9 +30,6 @@ export class ContractDetailsDialogComponent implements OnInit {
     this.contractId = this.data.contractId;
     this.apiService.get("http://localhost:8080/contract/"+this.contractId).subscribe({
       next:(result)=>{
-        console.log(result);
-        const customerBdayString = this.formatBirthDate(result.customer.birthDate);
-        result.customer.birthDate = customerBdayString;
         this.vehicle = result.vehicle;
         this.customer = result.customer;
         this.monthlyRate = result.monthlyRate;
@@ -45,10 +42,6 @@ export class ContractDetailsDialogComponent implements OnInit {
       },
     })
     console.log("Contract Details Data: "+ this.data.contractId);
-  }
-
-  formatBirthDate(arr: number[]): string {
-    return arr.map(value => value.toString().padStart(2, '0')).join('-');
   }
 
 }
