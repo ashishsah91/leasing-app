@@ -1,60 +1,58 @@
 <div class="container">
   <div class="float-right">
-    <button mat-raised-button color="primary" (click)="openLeasingContractDialog()">New Leasing Contract</button>
+    <button mat-raised-button color="primary" (click)="openVehicleDialog()">New Vehicle</button>
   </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="contractId">
-      <th mat-header-cell *matHeaderCellDef> Contract No. </th>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Vehicle Id </th>
       <td mat-cell *matCellDef="let element">
-        {{element.contractId}}
+        {{element.id}}
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="customerName">
-      <th mat-header-cell *matHeaderCellDef> Customer </th>
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef> Brand </th>
       <td mat-cell *matCellDef="let element">
-        {{element.customerName}}
+        {{element.brand}}
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="vehicleName">
-      <th mat-header-cell *matHeaderCellDef> Vehicle </th>
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef> Model </th>
       <td mat-cell *matCellDef="let element">
-        {{element.vehicleName}}
+        {{element.model}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="modelYear">
+      <th mat-header-cell *matHeaderCellDef> Model Year </th>
+      <td mat-cell *matCellDef="let element">
+        {{element.modelYear}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="vin">
-      <th mat-header-cell *matHeaderCellDef> VIN </th>
+      <th mat-header-cell *matHeaderCellDef> Vehicle Identification Number </th>
       <td mat-cell *matCellDef="let element">
         {{element.vin}}
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="monthlyRate">
-      <th mat-header-cell *matHeaderCellDef> Monthly Rate </th>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Vehicle Identification Number </th>
       <td mat-cell *matCellDef="let element">
-        {{element.monthlyRate}}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="vehiclePrice">
-      <th mat-header-cell *matHeaderCellDef> Vehicle Price </th>
-      <td mat-cell *matCellDef="let element">
-        {{element.vehiclePrice}}
+        {{element.price}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="showDetails(element)">
-          <mat-icon>visibility</mat-icon>
-        </button>
-        <button mat-icon-button (click)="editContract(element)">
+        <button mat-icon-button (click)="editVehicle(element)">
           <mat-icon class="edit-btn">edit</mat-icon>
         </button>
-        <button mat-icon-button (click)="deleteContract(element.contractId)">
+        <button mat-icon-button (click)="deleteVehicle(element.id)">
           <mat-icon class="del-btn">delete</mat-icon>
         </button>
       </td>
@@ -62,9 +60,10 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
   </table>
 
-  <mat-paginator *ngIf="dataSource.length>0 && !showSpinner"
+  <mat-paginator  *ngIf="dataSource.length>0 && !showSpinner"
     [pageSize]="pageSize"
     [pageSizeOptions]="[5,10, 25, 50, 100]"
     (page)="onPageChange($event)"
@@ -78,6 +77,7 @@
  </mat-progress-spinner>
   
 </div>
+
 <div class="text-center" *ngIf="dataSource.length==0 && !showSpinner">
   <h2>"No Records to Display"</h2>
 </div>

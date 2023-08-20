@@ -1,105 +1,104 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
+import { Vehicle } from 'src/app/models/vehicle.model';
 import { ApiService } from 'src/app/services/api.service';
-import { CustomerComponent } from '../customer/customer.component';
-import { UtilityService } from 'src/app/services/utility.service';
-import { ConfirmDeletionDialogComponent } from '../confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { ConstantsService } from 'src/app/services/constants.service';
-import { Customer } from 'src/app/models/customer.model';
-
+import { VehicleComponent } from '../vehicle/vehicle.component';
+import { ConfirmDeletionDialogComponent } from '../confirm-deletion-dialog/confirm-deletion-dialog.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.css'],
+  selector: 'app-vehicle-list',
+  templateUrl: './vehicle-list.component.html',
+  styleUrls: ['./vehicle-list.component.css'],
 })
-export class CustomerListComponent implements OnInit {
-  
-  // Define constants for spinner
+export class VehicleListComponent implements OnInit {
+  // Progress spinner properties
   color = ConstantsService.PROGRESS_SPINNER_THEME;
   mode = ConstantsService.PROGRESS_SPINNER_MODE;
   value = ConstantsService.PROGRESS_SPINNER_VALUE;
 
-  // Pagination configuration
+  // Pagination properties
   page = ConstantsService.PAGE_NUMBER;
   pageSize = ConstantsService.PAGE_SIZE;
   showSpinner: boolean = true;
 
-  // Access paginator using ViewChild
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  // Table columns and data source
   displayedColumns: string[] = [
     'id',
-    'firstName',
-    'lastName',
-    'birthDate',
+    'brand',
+    'model',
+    'modelYear',
+    'vin',
+    'price',
     'action',
   ];
-  dataSource: Customer[] = [];
+
+  dataSource: Vehicle[] = [];
   dialogWidth: string = ConstantsService.DIALOG_WIDTH;
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.getCustomers();
+    this.getVehicles(); // Initialize the component by fetching vehicles
   }
 
-  openCustomerDialog(): void {
-    // Open dialog to add a new customer
-    const dialogRef = this.dialog.open(CustomerComponent, {
+  // Open the vehicle dialog for adding a new vehicle
+  openVehicleDialog(): void {
+    const dialogRef = this.dialog.open(VehicleComponent, {
       width: this.dialogWidth,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        console.log('here in add customer');
-        this.getCustomers();
+        this.getVehicles();  // Refresh the vehicle list after dialog close
       }
     });
   }
 
-  editCustomer(customer: Customer): void {
-    // Open dialog to edit an existing customer
-    const dialogRef = this.dialog.open(CustomerComponent, {
+  // Open the vehicle dialog for editing an existing vehicle
+  editVehicle(vehicle: Vehicle): void {
+    const dialogRef = this.dialog.open(VehicleComponent, {
       width: this.dialogWidth,
-      data: customer,
+      data: vehicle,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        this.getCustomers();
+        this.getVehicles();  // Refresh the vehicle list after dialog close
       }
     });
   }
 
-  deleteCustomer(id: number): void {
-     // Open dialog to confirm customer deletion
+  // Open the confirmation dialog for deleting a vehicle
+  deleteVehicle(id: number): void {
     const dialogRef = this.dialog.open(ConfirmDeletionDialogComponent, {
       width: this.dialogWidth,
       data: {
-        deleteUrl: ConstantsService.updateCustomerUrl(id),
+        deleteUrl: ConstantsService.updateVehicleUrl(id),
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        this.getCustomers();
+        this.getVehicles(); // Refresh the vehicle list after dialog close
       }
     });
   }
 
-  // Get the list of existing customers from the server//
-  getCustomers() {
+  // Fetch the list of vehicles from the server
+  getVehicles(): void {
     this.apiService
       .get(
-        `${ConstantsService.getCustomersUrl()}?page=${this.page}&size=${
+        `${ConstantsService.getVehiclesUrl()}?page=${this.page}&size=${
           this.pageSize
         }&sort=UNSORTED`
       )
       .subscribe({
         next: (result) => {
+          console.log(result);
           this.dataSource = result.overviewItems;
           this.paginator.length = result.numberOfItems;
         },
@@ -112,10 +111,10 @@ export class CustomerListComponent implements OnInit {
       });
   }
 
-  // Handle page change event
+  // Handle pagination page change
   onPageChange(event: PageEvent) {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.getCustomers();
+    this.getVehicles();
   }
 }

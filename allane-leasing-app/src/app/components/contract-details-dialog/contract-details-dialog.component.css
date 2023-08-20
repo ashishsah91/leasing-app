@@ -8,6 +8,10 @@
     flex-basis: 40%;
 }
 
-h3 , span{
+ span{
   color:blue
+}
+
+h3{
+  text-decoration: underline;
 }

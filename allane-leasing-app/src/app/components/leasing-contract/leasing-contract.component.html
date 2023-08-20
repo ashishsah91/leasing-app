@@ -1,42 +1,39 @@
-<mat-card>
-  <mat-card-title>Leasing Contract Form</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="leasingForm" (ngSubmit)="onSubmit()">
-      <p>
-      <mat-form-field>
-        <mat-label>Monthly Rate</mat-label>
-        <input matInput type="number" formControlName="monthlyRate" required>
-      </mat-form-field>
-      <p>
+<form [formGroup]="leasingForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-label>Monthly Rate</mat-label>
+      <input matInput type="number" formControlName="monthlyRate" required>
+    </mat-form-field>
+    <p>
 
-      <p>  
-      <mat-form-field>
-        <mat-label>Customer</mat-label>
-        <mat-select formControlName="customer" required>
-          <mat-option *ngFor="let customer of customerOptions" [value]="customer">
-            {{ customer.firstName }}  {{ customer.lastName}}
-
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
       <p>
+        <mat-form-field>
+          <mat-label>Customer</mat-label>
+          <mat-select formControlName="customer" required>
+            <mat-option *ngFor="let customer of customerOptions" [value]="customer">
+              {{ customer.firstName }}
+              {{ customer.lastName}}
 
-      <p>  
-      <mat-form-field>
-        <mat-label>Vehicle</mat-label>
-        <mat-select formControlName="vehicle" required>
-          <mat-option *ngFor="let vehicle of vehicleOptions" [value]="vehicle">
-            {{ vehicle.brand }} {{vehicle.model}}  ({{vehicle.modelYear}})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>
+
+          <p>
+            <mat-form-field>
+              <mat-label>Vehicle</mat-label>
+              <mat-select formControlName="vehicle" required>
+                <mat-option *ngFor="let vehicle of vehicleOptions" [value]="vehicle">
+                  {{ vehicle.brand }}
+                  {{vehicle.model}}  ({{vehicle.modelYear}})
             VIN: {{vehicle.vin}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      </p>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
 
-      <p>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-      </p>
-    </form>
-  </mat-card-content>
-</mat-card>
-
+          <div mat-dialog-actions>
+            <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+            <button mat-flat-button color="primary"  type="submit" cdkFocusInitial mat-dialog-close [disabled]="leasingForm.invalid">Save</button>
+          </div>
+        </form>

@@ -7,41 +7,42 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-contract-details-dialog',
   templateUrl: './contract-details-dialog.component.html',
-  styleUrls: ['./contract-details-dialog.component.css']
+  styleUrls: ['./contract-details-dialog.component.css'],
 })
 export class ContractDetailsDialogComponent implements OnInit {
-
-  vehicle:Vehicle = {
+  vehicle: Vehicle = {
     id: 0,
     brand: '',
     model: '',
     modelYear: 0,
     vin: '',
-    price: 0
-  }
-  
-  customer:any = {};
-  contractId!: number;
-  monthlyRate!:number;
+    price: 0,
+  };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ContractOverview,private apiService:ApiService) { }
+  customer: any = {};
+  contractId!: number;
+  monthlyRate!: number;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: ContractOverview,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
-    this.contractId = this.data.contractId;
-    this.apiService.get("http://localhost:8080/contract/"+this.contractId).subscribe({
-      next:(result)=>{
-        this.vehicle = result.vehicle;
-        this.customer = result.customer;
-        this.monthlyRate = result.monthlyRate;
-      },
-      error:(err)=> {
-        console.log(err);
-      },
-      complete:()=> {
-        
-      },
-    })
-    console.log("Contract Details Data: "+ this.data.contractId);
+    this.contractId = this.data.contractId; // Extract contractId from the data
+    this.apiService
+      .get('http://localhost:8080/contract/' + this.contractId)
+      .subscribe({
+        next: (result) => {
+          // Populate the vehicle, customer, and monthlyRate
+          this.vehicle = result.vehicle;
+          this.customer = result.customer;
+          this.monthlyRate = result.monthlyRate;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {},
+      });
   }
-
 }

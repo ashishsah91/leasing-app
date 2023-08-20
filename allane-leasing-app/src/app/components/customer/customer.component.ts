@@ -5,7 +5,6 @@ import { ApiService } from 'src/app/services/api.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UtilityService } from 'src/app/services/utility.service';
 import { ConstantsService } from 'src/app/services/constants.service';
-import { ContractOverview } from 'src/app/models/contract-overview.model';
 import { Customer } from 'src/app/models/customer.model';
 
 @Component({
@@ -26,6 +25,8 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+
+     // If data is provided, set the form for updating
     if (this.data) {
       this.userForm.controls['firstName'].setValue(this.data.firstName);
       this.userForm.controls['lastName'].setValue(this.data.lastName);
@@ -38,15 +39,12 @@ export class CustomerComponent implements OnInit {
   onSubmit() {
     if (this.userForm.valid) {
       const userData = this.userForm.value;
-      if (this.data) {
-        this.updateCustomer(userData, this.data.id);
-      } else {
-        this.addCustomer(userData);
-      }
+      this.data ? this.updateCustomer(userData, this.data.id) : this.addCustomer(userData);
     }
   }
 
   private initForm(): void {
+    // Initialize the userForm FormGroup
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -64,12 +62,12 @@ export class CustomerComponent implements OnInit {
       ),
     };
 
+    // Perform the add API call
     this.apiService
       .put(ConstantsService.updateCustomerUrl(userId), putData)
       .subscribe({
         next: (result) => {
-          const snackBarMsg = 'Customer Updated';
-          this.utilityService.snackBarCall(snackBarMsg, 'Success');
+          this.utilityService.snackBarCall('Customer Updated', 'Success');
         },
         error: (error) => {
           this.utilityService.snackBarCall(error.message, 'Failure');
@@ -93,9 +91,10 @@ export class CustomerComponent implements OnInit {
       .post(ConstantsService.postCustomerUrl(), postData)
       .subscribe({
         next: (result) => {
-          const fullName = `${result.firstName} ${result.lastName}`;
-          const snackBarMsg = `${fullName} added`;
-          this.utilityService.snackBarCall(snackBarMsg, 'Success');
+          this.utilityService.snackBarCall(
+            `${result.firstName} ${result.lastName}` + ' added',
+            'Success'
+          );
         },
         error: (error) => {
           this.utilityService.snackBarCall(error.message, 'Failure');

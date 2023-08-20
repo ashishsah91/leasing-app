@@ -1,33 +1,29 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" required>
+    </mat-form-field>
+  </p>
 
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-     <p>   
-      <mat-form-field>
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="firstName" required>
-      </mat-form-field>
-     </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" required>
+    </mat-form-field>
+  </p>
 
-     <p>
-      <mat-form-field>
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastName" required>
-      </mat-form-field>
-     </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Birthdate</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </p>
 
-     <p>
-      <mat-form-field>
-        <mat-label>Birthdate</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="birthDate" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-     </p>
-
-     <div mat-dialog-actions>
-        <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
-        <button mat-flat-button color="primary"  type="submit" cdkFocusInitial mat-dialog-close [disabled]="userForm.invalid">Save</button>
-     </div>
-  </form>
- 
-   
- 
+  <div mat-dialog-actions>
+    <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary"  type="submit" cdkFocusInitial mat-dialog-close [disabled]="userForm.invalid">Save</button>
+  </div>
+</form>
