@@ -51,3 +51,7 @@ mat-progress-spinner{
   margin:auto;
 }
 
+.mat-datepicker-content .mat-calendar{
+  height: auto !important;
+}
+
