@@ -55,3 +55,10 @@ mat-progress-spinner{
   height: auto !important;
 }
 
+.currency-symbol {
+  position: absolute;
+  right: 8px; /* Adjust the value to position the symbol properly */
+  top: 50%;
+  transform: translateY(-50%);
+}
+

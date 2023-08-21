@@ -2,7 +2,8 @@
   <p>
     <mat-form-field>
       <mat-label>Monthly Rate</mat-label>
-      <input matInput type="number" formControlName="monthlyRate" required>
+      <input matInput type="number" formControlName="monthlyRate" min="0" required>
+      <span class="currency-symbol">€</span>
     </mat-form-field>
     <p>
 

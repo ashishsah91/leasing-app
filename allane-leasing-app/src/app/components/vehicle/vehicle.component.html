@@ -21,7 +21,7 @@
   <p>
   <mat-form-field>
     <mat-label>Model Year</mat-label>
-    <input matInput formControlName="modelYear" type="number">
+    <input matInput formControlName="modelYear" type="number" min="0">
   </mat-form-field>
   </p>
 
@@ -35,7 +35,8 @@
   <p>
   <mat-form-field>
     <mat-label>Price</mat-label>
-    <input matInput formControlName="price" type="number">
+    <input matInput formControlName="price" type="number" min="0">
+    <span class="currency-symbol">€</span>
   </mat-form-field>
   </p>
   
