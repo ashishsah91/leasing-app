@@ -40,7 +40,6 @@ export class VehicleComponent implements OnInit {
 
   onSubmit(): void {
     if (this.vehicleForm.valid) {
-      console.log(this.vehicleForm.value);
       const formObject = this.vehicleForm.value;
       const postData = {
         brand: formObject.brand.name,
@@ -71,7 +70,6 @@ export class VehicleComponent implements OnInit {
     this.apiService.get(`${ConstantsService.getVehicleBrands()}`).subscribe({
       next: (result) => {
         this.brandOptions = result;
-        console.log(this.brandOptions);
       },
       error: (err) => {},
       complete: () => {

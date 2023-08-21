@@ -53,7 +53,7 @@ export class VehicleListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        this.getVehicles();  // Refresh the vehicle list after dialog close
+        this.getVehicles(); // Refresh the vehicle list after dialog close
       }
     });
   }
@@ -67,7 +67,7 @@ export class VehicleListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        this.getVehicles();  // Refresh the vehicle list after dialog close
+        this.getVehicles(); // Refresh the vehicle list after dialog close
       }
     });
   }
@@ -98,13 +98,10 @@ export class VehicleListComponent implements OnInit {
       )
       .subscribe({
         next: (result) => {
-          console.log(result);
           this.dataSource = result.overviewItems;
           this.paginator.length = result.numberOfItems;
         },
-        error: (error) => {
-          console.log(error);
-        },
+        error: (error) => {},
         complete: () => {
           this.showSpinner = false;
         },

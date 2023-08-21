@@ -115,7 +115,6 @@ export class LeasingContractComponent implements OnInit {
       .post(ConstantsService.postLeasingContractUrl(), postData)
       .subscribe({
         next: (result) => {
-          console.log(result);
           this.utilityService.snackBarCall('New Contract added', 'Success');
         },
         error: (err) => {

@@ -54,7 +54,6 @@ export class CustomerListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        console.log('here in add customer');
         this.getCustomers();
       }
     });

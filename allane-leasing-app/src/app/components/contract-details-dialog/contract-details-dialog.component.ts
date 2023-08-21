@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ContractOverview } from 'src/app/models/contract-overview.model';
 import { Vehicle } from 'src/app/models/vehicle.model';
 import { ApiService } from 'src/app/services/api.service';
+import { ConstantsService } from 'src/app/services/constants.service';
 
 @Component({
   selector: 'app-contract-details-dialog',
@@ -31,7 +32,7 @@ export class ContractDetailsDialogComponent implements OnInit {
   ngOnInit(): void {
     this.contractId = this.data.contractId; // Extract contractId from the data
     this.apiService
-      .get('http://localhost:8080/contract/' + this.contractId)
+      .get(ConstantsService.updateLeasingContractUrl(this.data.contractId))
       .subscribe({
         next: (result) => {
           // Populate the vehicle, customer, and monthlyRate
@@ -39,9 +40,7 @@ export class ContractDetailsDialogComponent implements OnInit {
           this.customer = result.customer;
           this.monthlyRate = result.monthlyRate;
         },
-        error: (err) => {
-          console.log(err);
-        },
+        error: (err) => {},
         complete: () => {},
       });
   }

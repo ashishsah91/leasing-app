@@ -66,7 +66,6 @@ export class ContractOverviewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refresh') {
-        console.log('here in add contarct overview');
         this.getContractOverviews();
       }
     });
@@ -82,7 +81,6 @@ export class ContractOverviewComponent implements OnInit {
       )
       .subscribe({
         next: (result) => {
-          console.log(result);
           this.dataSource = result.overviewItems;
           this.paginator.length = result.numberOfItems;
         },
